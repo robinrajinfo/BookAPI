@@ -19,8 +19,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to Book API! Go to /books/ to use the API.")
 
 urlpatterns = [
+    path('', home),
     path('admin/', admin.site.urls),
     path('', include('bookapp.urls')), # Linking bookapp URLs to root
 ]
